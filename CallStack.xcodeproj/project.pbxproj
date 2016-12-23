@@ -15,6 +15,9 @@
 		60F0F1501E089A3E00500011 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F0F14E1E089A3E00500011 /* LaunchScreen.storyboard */; };
 		60F0F15B1E089A3E00500011 /* CallStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F15A1E089A3E00500011 /* CallStackTests.swift */; };
 		60F0F1661E089A3E00500011 /* CallStackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1651E089A3E00500011 /* CallStackUITests.swift */; };
+		60F0F1761E08A3F100500011 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1751E08A3F100500011 /* ToDoItem.swift */; };
+		60F5011D1E0A2C180006E649 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5011C1E0A2C180006E649 /* ToDoList.swift */; };
+		60F501211E0B30B50006E649 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F501201E0B30B50006E649 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +38,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		60F0F13F1E089A3E00500011 /* CallStack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallStack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F0F1421E089A3E00500011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F0F1441E089A3E00500011 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		60F0F1471E089A3E00500011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,12 +45,16 @@
 		60F0F14C1E089A3E00500011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60F0F14F1E089A3E00500011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60F0F1511E089A3E00500011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60F0F1561E089A3E00500011 /* CallStackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CallStackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F0F15A1E089A3E00500011 /* CallStackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStackTests.swift; sourceTree = "<group>"; };
 		60F0F15C1E089A3E00500011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		60F0F1611E089A3E00500011 /* CallStackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CallStackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F0F1651E089A3E00500011 /* CallStackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStackUITests.swift; sourceTree = "<group>"; };
 		60F0F1671E089A3E00500011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60F0F1751E08A3F100500011 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		60F5011C1E0A2C180006E649 /* ToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		60F501201E0B30B50006E649 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		60F501261E0DCC730006E649 /* CallStack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallStack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		60F501271E0DCC730006E649 /* CallStackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CallStackTests.xctest; path = "/Users/MichaelBellissimo/Documents/Programming/Iphone Apps/CallStack/build/Debug-iphoneos/CallStackTests.xctest"; sourceTree = "<absolute>"; };
+		60F501281E0DCC730006E649 /* CallStackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = CallStackUITests.xctest; path = "/Users/MichaelBellissimo/Documents/Programming/Iphone Apps/CallStack/build/Debug-iphoneos/CallStackUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,18 +88,8 @@
 				60F0F1411E089A3E00500011 /* CallStack */,
 				60F0F1591E089A3E00500011 /* CallStackTests */,
 				60F0F1641E089A3E00500011 /* CallStackUITests */,
-				60F0F1401E089A3E00500011 /* Products */,
+				60F501261E0DCC730006E649 /* CallStack.app */,
 			);
-			sourceTree = "<group>";
-		};
-		60F0F1401E089A3E00500011 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				60F0F13F1E089A3E00500011 /* CallStack.app */,
-				60F0F1561E089A3E00500011 /* CallStackTests.xctest */,
-				60F0F1611E089A3E00500011 /* CallStackUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		60F0F1411E089A3E00500011 /* CallStack */ = {
@@ -101,6 +97,9 @@
 			children = (
 				60F0F1421E089A3E00500011 /* AppDelegate.swift */,
 				60F0F1441E089A3E00500011 /* ViewController.swift */,
+				60F501201E0B30B50006E649 /* DataController.swift */,
+				60F0F1751E08A3F100500011 /* ToDoItem.swift */,
+				60F5011C1E0A2C180006E649 /* ToDoList.swift */,
 				60F0F1461E089A3E00500011 /* Main.storyboard */,
 				60F0F14C1E089A3E00500011 /* Assets.xcassets */,
 				60F0F14E1E089A3E00500011 /* LaunchScreen.storyboard */,
@@ -145,7 +144,7 @@
 			);
 			name = CallStack;
 			productName = CallStack;
-			productReference = 60F0F13F1E089A3E00500011 /* CallStack.app */;
+			productReference = 60F501261E0DCC730006E649 /* CallStack.app */;
 			productType = "com.apple.product-type.application";
 		};
 		60F0F1551E089A3E00500011 /* CallStackTests */ = {
@@ -163,7 +162,7 @@
 			);
 			name = CallStackTests;
 			productName = CallStackTests;
-			productReference = 60F0F1561E089A3E00500011 /* CallStackTests.xctest */;
+			productReference = 60F501271E0DCC730006E649 /* CallStackTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		60F0F1601E089A3E00500011 /* CallStackUITests */ = {
@@ -181,7 +180,7 @@
 			);
 			name = CallStackUITests;
 			productName = CallStackUITests;
-			productReference = 60F0F1611E089A3E00500011 /* CallStackUITests.xctest */;
+			productReference = 60F501281E0DCC730006E649 /* CallStackUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -219,7 +218,7 @@
 				Base,
 			);
 			mainGroup = 60F0F1361E089A3E00500011;
-			productRefGroup = 60F0F1401E089A3E00500011 /* Products */;
+			productRefGroup = 60F0F1361E089A3E00500011;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -263,7 +262,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				60F0F1451E089A3E00500011 /* ViewController.swift in Sources */,
+				60F501211E0B30B50006E649 /* DataController.swift in Sources */,
 				60F0F14B1E089A3E00500011 /* CallStack.xcdatamodeld in Sources */,
+				60F5011D1E0A2C180006E649 /* ToDoList.swift in Sources */,
+				60F0F1761E08A3F100500011 /* ToDoItem.swift in Sources */,
 				60F0F1431E089A3E00500011 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,6 +511,7 @@
 				60F0F16C1E089A3E00500011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		60F0F16D1E089A3E00500011 /* Build configuration list for PBXNativeTarget "CallStackTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +520,7 @@
 				60F0F16F1E089A3E00500011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		60F0F1701E089A3E00500011 /* Build configuration list for PBXNativeTarget "CallStackUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +529,7 @@
 				60F0F1721E089A3E00500011 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
