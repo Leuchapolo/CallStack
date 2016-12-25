@@ -20,7 +20,7 @@ class DataController: NSObject {
         super.init()
     }
     
-    func sortedFunction(obj1 : ToDo, obj2 : ToDo ) -> Bool{
+    private func sortedFunction(obj1 : ToDo, obj2 : ToDo ) -> Bool{
         return obj1.index > obj2.index
     }
     

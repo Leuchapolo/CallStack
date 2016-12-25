@@ -23,22 +23,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         toDoItems = coreStack.loadState()
         
-//        toDoItems.prepend(newItem: ToDoItem(text: "feed the cat"))
-//        toDoItems.prepend(newItem: ToDoItem(text: "buy eggs"))
-//        toDoItems.prepend(newItem: ToDoItem(text: "watch WWDC videos"))
-//        toDoItems.prepend(newItem: ToDoItem(text: "ahdsfkj"))
-//        toDoItems.prepend(newItem: ToDoItem(text: "plants lots of them"))
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        if toDoItems.count() > 0 {
-            return
-        }
         
-//
-        toDoItems.printList()
+
     }
     
     @IBAction func pop(_ sender: Any) {
@@ -65,7 +57,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             alert -> Void in
             
             let firstTextField = alertController.textFields![0] as UITextField
-            self.toDoItems.prepend(newItem: ToDoItem(text: firstTextField.text!))
+            self.toDoItems.list.append(ToDoItem(text: firstTextField.text!))
             self.tableView.reloadData()
             
         })
@@ -100,7 +92,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) 
-        let item = toDoItems.get(index: indexPath.row)
+        let item = toDoItems.get(index: toDoItems.count() - 1 - indexPath.row)
         cell.textLabel?.text = item.text
         return cell
     }
