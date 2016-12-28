@@ -25,7 +25,7 @@ class DataController: NSObject {
     }
     
     func loadState() -> ToDoList{
-        var returnList = ToDoList()
+        let returnList = ToDoList()
         let todosFetch = NSFetchRequest<ToDo>(entityName: "ToDo")
         
         do {
@@ -34,7 +34,7 @@ class DataController: NSObject {
         
             let sortedTodos = fetchedToDos.sorted(by: sortedFunction)
             for item in sortedTodos{
-                
+                print(item.index)
                 currentToDo = ToDoItem(text: item.text! )
                 returnList.prepend(newItem: currentToDo)
             }
@@ -42,6 +42,8 @@ class DataController: NSObject {
             for item in fetchedToDos{
                 managedObjectContext.delete(item)
             }
+            
+            
             
         } catch {
             fatalError("Failed to fetch todos: \(error)")
@@ -51,22 +53,32 @@ class DataController: NSObject {
     }
     
     func saveState(items : ToDoList){
-        
-        
-        var index = 0
-        for item in items.list{
-            
-            let entity = NSEntityDescription.entity(forEntityName: "ToDo", in: managedObjectContext)
-            let todo = NSManagedObject(entity: entity!, insertInto: managedObjectContext) as! ToDo
-            todo.setValue(item.text, forKey: "text")
-            todo.setValue(index, forKey: "index")
-            index += 1
-        }
+        let todosFetch = NSFetchRequest<ToDo>(entityName: "ToDo")
+        print("SAVING")
         do {
-            try managedObjectContext.save()
+            if(try managedObjectContext.count(for: todosFetch) == 0)
+            {
+                
+                
+                var index = 0
+                for item in items.list{
+                    print(item.text)
+                    let entity = NSEntityDescription.entity(forEntityName: "ToDo", in: managedObjectContext)
+                    let todo = NSManagedObject(entity: entity!, insertInto: managedObjectContext) as! ToDo
+                    todo.setValue(item.text, forKey: "text")
+                    todo.setValue(index, forKey: "index")
+                    index += 1
+                }
+                do {
+                    try managedObjectContext.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
+            }
         } catch {
             fatalError("Failure to save context: \(error)")
         }
+        
         
     }
     

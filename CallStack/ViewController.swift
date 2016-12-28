@@ -92,10 +92,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 My.cellSnapshot!.center = center
                 
                 if ((indexPath != nil) && (indexPath != Path.initialIndexPath)) {
-                    toDoItems.list.insert(toDoItems.list.remove(at: Path.initialIndexPath!.row), at: indexPath!.row)
+                    
+                    //to fix adding to end then you need to append to the list instead of insert so do if statement
+                    toDoItems.list.insert(toDoItems.list.remove(at: toDoItems.count() - 1 - Path.initialIndexPath!.row), at: toDoItems.count() -  indexPath!.row)
+                    print((Path.initialIndexPath!.row as NSNumber).stringValue + (" : Initial index"))
+                    print((indexPath!.row as NSNumber).stringValue + (" : New index"))
+                    print(((toDoItems.count() - 1 - Path.initialIndexPath!.row) as NSNumber).stringValue + (" : Old index in Array"))
+                    print(((toDoItems.count() - 1 - indexPath!.row) as NSNumber).stringValue + (" : New index in Array"))
+                    
+                    
+                    
+                    toDoItems.printList()
+                    
                     tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     Path.initialIndexPath = indexPath
+                    
                 }
+                
             }
         default:
             if Path.initialIndexPath != nil {
@@ -159,8 +172,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func addScreenButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Add New Name", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        
-        
+//REMOVE THIS THIS IS FOR DEBUGGING!!!!!!!!!!!!!!!!!!!
+        tableView.reloadData()
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
             (action : UIAlertAction!) -> Void in
             
