@@ -30,10 +30,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.tableLongPressed(_:)))
-        
         self.tableView.addGestureRecognizer(longpress)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = 50.0
+        
+        
+        
+        
         
 
+    }
+    
+    func colorForIndex(index: Int) -> UIColor {
+        let itemCount = toDoItems.count() - 1
+        var val = (CGFloat(index) / CGFloat(itemCount)) * 0.6
+        if (itemCount == 1 && index == 1){
+            val = 0.3
+        }
+        return UIColor(red: val / 2, green: val, blue: 0.84, alpha: 1.0)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = colorForIndex(index: indexPath.row)
     }
     
     func tableLongPressed(_ gestureRecognizer: UIGestureRecognizer) {
@@ -106,10 +125,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     Path.initialIndexPath = indexPath
-                    
+                    tableView.reloadData()
                 }
                 
             }
+        
+            
         default:
             if Path.initialIndexPath != nil {
                 let cell = tableView.cellForRow(at: Path.initialIndexPath!) as UITableViewCell!
@@ -219,6 +240,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) 
         let item = toDoItems.get(index: toDoItems.count() - 1 - indexPath.row)
         cell.textLabel?.text = item.text
+        cell.textLabel?.textColor = UIColor.white
+        cell.layer.borderColor = UIColor.black.cgColor
         return cell
     }
     
