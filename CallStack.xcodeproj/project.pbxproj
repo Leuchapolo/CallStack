@@ -195,6 +195,7 @@
 				TargetAttributes = {
 					60F0F13E1E089A3E00500011 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = G95G9M592A;
 						ProvisioningStyle = Automatic;
 					};
 					60F0F1551E089A3E00500011 = {
@@ -418,6 +419,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G95G9M592A;
 				INFOPLIST_FILE = CallStack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leucha.CallStack;
@@ -430,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G95G9M592A;
 				INFOPLIST_FILE = CallStack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leucha.CallStack;

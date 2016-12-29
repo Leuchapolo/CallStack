@@ -21,6 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWL-oq-Wh2">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="623" id="7NP-AH-Oqw"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bsl-8v-Rv9">
                                 <rect key="frame" x="244" y="623" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -29,25 +36,6 @@
                                     <action selector="addScreenButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Psn-j0-pT0"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ShJ-Nw-z1a">
-                                <rect key="frame" x="0.0" y="20" width="375" height="595"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItem" id="6iv-Lq-Ar5">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iv-Lq-Ar5" id="Kbh-64-zJN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="18j-Jp-US7"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pqL-Ep-WLM"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aL4-Mh-ec4">
                                 <rect key="frame" x="172" y="623" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -58,8 +46,53 @@
                                     <action selector="pop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yUQ-Av-VjH"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7G-69-DtC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="backgroundColor" red="0.95566553089999995" green="0.98962850999999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="bcF-1k-bos"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.95566553089999995" green="0.98962850999999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="CallStack" id="kkE-jf-uQA"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ShJ-Nw-z1a">
+                                <rect key="frame" x="9" y="73" width="357" height="542"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="542" id="Ca8-xy-yaT"/>
+                                </constraints>
+                                <color key="sectionIndexBackgroundColor" red="0.95686274509803926" green="0.99215686274509807" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoItem" id="6iv-Lq-Ar5">
+                                        <rect key="frame" x="0.0" y="28" width="357" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6iv-Lq-Ar5" id="Kbh-64-zJN">
+                                            <rect key="frame" x="0.0" y="0.0" width="357" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="18j-Jp-US7"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="pqL-Ep-WLM"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95566553089999995" green="0.98962850999999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ShJ-Nw-z1a" firstAttribute="top" secondItem="H7G-69-DtC" secondAttribute="bottom" constant="9" id="6Lm-cm-JCw"/>
+                            <constraint firstAttribute="trailing" secondItem="H7G-69-DtC" secondAttribute="trailing" id="RWp-2J-kOq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GWL-oq-Wh2" secondAttribute="bottom" id="WrA-fe-83w"/>
+                            <constraint firstAttribute="trailing" secondItem="ShJ-Nw-z1a" secondAttribute="trailing" constant="9" id="ZeR-gx-veB"/>
+                            <constraint firstItem="GWL-oq-Wh2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hF6-jg-CMx"/>
+                            <constraint firstAttribute="trailing" secondItem="GWL-oq-Wh2" secondAttribute="trailing" id="hx6-vr-f7e"/>
+                            <constraint firstItem="ShJ-Nw-z1a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="9" id="mU2-eJ-6Xe"/>
+                            <constraint firstItem="H7G-69-DtC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pWh-1b-auz"/>
+                            <constraint firstItem="H7G-69-DtC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uQy-7r-Ojf"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="ShJ-Nw-z1a" id="rWG-gE-vet"/>

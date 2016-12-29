@@ -50,10 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return UIColor(red: val / 2, green: val, blue: 0.84, alpha: 1.0)
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = colorForIndex(index: indexPath.row)
-    }
+    
     
     func tableLongPressed(_ gestureRecognizer: UIGestureRecognizer) {
         let longPress = gestureRecognizer as! UILongPressGestureRecognizer
@@ -241,10 +238,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let item = toDoItems.get(index: toDoItems.count() - 1 - indexPath.row)
         cell.textLabel?.text = item.text
         cell.textLabel?.textColor = UIColor.white
-        cell.layer.borderColor = UIColor.black.cgColor
+        cell.textLabel?.textAlignment = .center
+        cell.layer.cornerRadius = 8.0
+        
+        cell.layer.borderWidth = 4
+        cell.layer.borderColor = UIColor.white.cgColor
         return cell
+        
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath) {
+        cell.backgroundColor = colorForIndex(index: indexPath.row)
+        
+    }
 
 }
 
