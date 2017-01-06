@@ -31,7 +31,7 @@ class ToDoList: NSObject {
     }
     
     func pop(){
-        self.list.removeLast()
+        list.removeLast()
     }
     
     func get(index : Int) -> ToDoItem{

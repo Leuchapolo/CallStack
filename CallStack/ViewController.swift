@@ -111,14 +111,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     //to fix adding to end then you need to append to the list instead of insert so do if statement
                     toDoItems.list.insert(toDoItems.list.remove(at: toDoItems.count() - 1 - Path.initialIndexPath!.row), at: toDoItems.count() -  indexPath!.row)
-                    print((Path.initialIndexPath!.row as NSNumber).stringValue + (" : Initial index"))
-                    print((indexPath!.row as NSNumber).stringValue + (" : New index"))
-                    print(((toDoItems.count() - 1 - Path.initialIndexPath!.row) as NSNumber).stringValue + (" : Old index in Array"))
-                    print(((toDoItems.count() - 1 - indexPath!.row) as NSNumber).stringValue + (" : New index in Array"))
+                    //Make it so that it just changes a variable newIndex that tells Firebase where to change it to and save it after you move it and this is executed at uigesturerecogstate.ended
                     
                     
-                    
-                    toDoItems.printList()
                     
                     tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     Path.initialIndexPath = indexPath

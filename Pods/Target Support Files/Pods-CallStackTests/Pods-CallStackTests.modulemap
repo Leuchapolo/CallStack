@@ -1,0 +1,6 @@
+framework module Pods_CallStackTests {
+  umbrella header "Pods-CallStackTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
