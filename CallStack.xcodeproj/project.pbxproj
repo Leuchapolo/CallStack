@@ -11,14 +11,12 @@
 		60F0F1431E089A3E00500011 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1421E089A3E00500011 /* AppDelegate.swift */; };
 		60F0F1451E089A3E00500011 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1441E089A3E00500011 /* ViewController.swift */; };
 		60F0F1481E089A3E00500011 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F0F1461E089A3E00500011 /* Main.storyboard */; };
-		60F0F14B1E089A3E00500011 /* CallStack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1491E089A3E00500011 /* CallStack.xcdatamodeld */; };
 		60F0F14D1E089A3E00500011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60F0F14C1E089A3E00500011 /* Assets.xcassets */; };
 		60F0F1501E089A3E00500011 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F0F14E1E089A3E00500011 /* LaunchScreen.storyboard */; };
 		60F0F15B1E089A3E00500011 /* CallStackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F15A1E089A3E00500011 /* CallStackTests.swift */; };
 		60F0F1661E089A3E00500011 /* CallStackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1651E089A3E00500011 /* CallStackUITests.swift */; };
 		60F0F1761E08A3F100500011 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F0F1751E08A3F100500011 /* ToDoItem.swift */; };
 		60F5011D1E0A2C180006E649 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F5011C1E0A2C180006E649 /* ToDoList.swift */; };
-		60F501211E0B30B50006E649 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F501201E0B30B50006E649 /* DataController.swift */; };
 		60F5012E1E15B4D00006E649 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60F5012D1E15B4D00006E649 /* GoogleService-Info.plist */; };
 		60F501321E15B61E0006E649 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 60F501311E15B61E0006E649 /* Podfile */; };
 		96013DC2EED7504A6551217D /* Pods_CallStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 501F4971163FEDD4830DB38E /* Pods_CallStack.framework */; };
@@ -48,7 +46,6 @@
 		60F0F1421E089A3E00500011 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60F0F1441E089A3E00500011 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		60F0F1471E089A3E00500011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		60F0F14A1E089A3E00500011 /* CallStack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CallStack.xcdatamodel; sourceTree = "<group>"; };
 		60F0F14C1E089A3E00500011 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		60F0F14F1E089A3E00500011 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60F0F1511E089A3E00500011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,7 +55,6 @@
 		60F0F1671E089A3E00500011 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60F0F1751E08A3F100500011 /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		60F5011C1E0A2C180006E649 /* ToDoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
-		60F501201E0B30B50006E649 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		60F501261E0DCC730006E649 /* CallStack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CallStack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F5012D1E15B4D00006E649 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "CallStack/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60F5012F1E15B55C0006E649 /* CallStackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CallStackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,14 +118,12 @@
 			children = (
 				60F0F1421E089A3E00500011 /* AppDelegate.swift */,
 				60F0F1441E089A3E00500011 /* ViewController.swift */,
-				60F501201E0B30B50006E649 /* DataController.swift */,
 				60F0F1751E08A3F100500011 /* ToDoItem.swift */,
 				60F5011C1E0A2C180006E649 /* ToDoList.swift */,
 				60F0F1461E089A3E00500011 /* Main.storyboard */,
 				60F0F14C1E089A3E00500011 /* Assets.xcassets */,
 				60F0F14E1E089A3E00500011 /* LaunchScreen.storyboard */,
 				60F0F1511E089A3E00500011 /* Info.plist */,
-				60F0F1491E089A3E00500011 /* CallStack.xcdatamodeld */,
 			);
 			path = CallStack;
 			sourceTree = "<group>";
@@ -460,8 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				60F0F1451E089A3E00500011 /* ViewController.swift in Sources */,
-				60F501211E0B30B50006E649 /* DataController.swift in Sources */,
-				60F0F14B1E089A3E00500011 /* CallStack.xcdatamodeld in Sources */,
 				60F5011D1E0A2C180006E649 /* ToDoList.swift in Sources */,
 				60F0F1761E08A3F100500011 /* ToDoItem.swift in Sources */,
 				60F0F1431E089A3E00500011 /* AppDelegate.swift in Sources */,
@@ -738,19 +730,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		60F0F1491E089A3E00500011 /* CallStack.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				60F0F14A1E089A3E00500011 /* CallStack.xcdatamodel */,
-			);
-			currentVersion = 60F0F14A1E089A3E00500011 /* CallStack.xcdatamodel */;
-			path = CallStack.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 60F0F1371E089A3E00500011 /* Project object */;
 }

@@ -7,27 +7,34 @@
 //
 
 import UIKit
+import Firebase
 
 class ToDoList: NSObject {
     
     var list = [ToDoItem]()
     
     
+    
     func count() -> Int {
         return list.count
     }
     
+    
+    
     func prepend(newItem : ToDoItem?) -> Bool{
         
-        if(list.count == 0){
-            list.append(newItem!)
-            
-            return true
-        }
+        list.append(newItem!)
         
-        list.insert(newItem!, at: 0)
         
         return true
+    }
+    
+    func sort(){
+        self.list.sort(by: sortedFunction)
+    }
+    
+    private func sortedFunction (item1 : ToDoItem, item2 : ToDoItem) -> Bool {
+        return item1.index < item2.index
     }
     
     func pop(){
@@ -38,9 +45,11 @@ class ToDoList: NSObject {
         return list[index]
     }
     
+    
+    
     func printList(){
         for item in list{
-            print(item.text)
+            print(item.text())
         }
     }
     

@@ -7,25 +7,31 @@
 //
 
 import UIKit
+import Firebase
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    var ref : FIRDatabaseReference!
     
     @IBOutlet weak var tableView: UITableView!
 
     
     var toDoItems = ToDoList()
-    var coreStack = DataController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        super.viewDidLoad()
-        toDoItems = coreStack.loadState()
+        self.ref = FIRDatabase.database().reference()
         
-
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+                                                //LOAD METHOD GOES HERE!!!!!!!!!!!!!
+        toDoItems = ToDoList()
+        loadList(thingName: "Take a bath", instanceNumber: 0, ref: ref)
+        let name = "Take a bath"
+        self.ref.child("Everything/"  + name).setValue(["using" : [["value" : "hot water", "instance" :  0, "index" : 0]], "with" : [["value" : "alone","instance" : 0, "index" : 1]], "To do" : [["value" : "Turn on faucet" ,"instance" : 0, "index" : 2]]])
+        
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -38,8 +44,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
+        
 
     }
+    
+    func loadList(thingName : String, instanceNumber : Int, ref : FIRDatabaseReference){
+        
+        let refHandle = ref.child("Everything/" + thingName).observe(FIRDataEventType.value, with: { (snapshot) in
+            let postDict = snapshot.value as? [String : [[String : AnyObject]]] ?? [:]
+            
+            for(relationship, value) in postDict {
+                print(relationship + ": " + (value[0]["value"] as! String))
+                //make temp list and then sort it and then prepend onto the list
+                
+                
+                self.toDoItems.prepend(newItem: ToDoItem(relationship: relationship, value: value[0]["value"] as! String, index: value[0]["index"] as! Int, instance: value[0]["instance"] as! Int))
+            }
+            self.toDoItems.sort()
+            
+            self.tableView.reloadData()
+        })
+        
+    }
+    
+    
+    
+    
     
     func colorForIndex(index: Int) -> UIColor {
         let itemCount = toDoItems.count() - 1
@@ -174,9 +204,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    func appMovedToBackground(){
-        coreStack.saveState(items: toDoItems)
-    }
     
     
     
@@ -185,8 +212,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func addScreenButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Add New Name", message: "", preferredStyle: UIAlertControllerStyle.alert)
-//REMOVE THIS THIS IS FOR DEBUGGING!!!!!!!!!!!!!!!!!!!
-        tableView.reloadData()
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
             (action : UIAlertAction!) -> Void in
             
@@ -195,7 +221,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             alert -> Void in
             
             let firstTextField = alertController.textFields![0] as UITextField
-            self.toDoItems.list.append(ToDoItem(text: firstTextField.text!))
+            let secondTextField = alertController.textFields![1] as UITextField
+            
+            self.toDoItems.list.append(ToDoItem(relationship: firstTextField.text!, value: secondTextField.text!, index: -1, instance: 0))
             self.tableView.reloadData()
             
         })
@@ -203,7 +231,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "What would you like to add?"
+            textField.placeholder = "What is the relationship?"
+        }
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "What is the value?"
         }
         
         
@@ -231,7 +262,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) 
         let item = toDoItems.get(index: toDoItems.count() - 1 - indexPath.row)
-        cell.textLabel?.text = item.text
+        cell.textLabel?.text = item.text()
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.textAlignment = .center
         cell.layer.cornerRadius = 8.0
