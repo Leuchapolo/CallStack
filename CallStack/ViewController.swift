@@ -27,8 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                                 //LOAD METHOD GOES HERE!!!!!!!!!!!!!
         toDoItems = ToDoList()
         loadList(thingName: "Take a bath", instanceNumber: 0, ref: ref)
-        let name = "Take a bath"
-        self.ref.child("Everything/"  + name).setValue(["using" : [["value" : "hot water", "instance" :  0, "index" : 0]], "with" : [["value" : "alone","instance" : 0, "index" : 1]], "To do" : [["value" : "Turn on faucet" ,"instance" : 0, "index" : 2]]])
+        
+        
         
         
         
@@ -48,17 +48,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+    func addChild(parent : String, relationship : String, value : String ){
+        self.ref.child("Everything/"  + parent + "/" + relationship + "/" + value).setValue( ["instance" :  0, "index" : toDoItems.count()])
+        
+    }
+    
     func loadList(thingName : String, instanceNumber : Int, ref : FIRDatabaseReference){
         
         let refHandle = ref.child("Everything/" + thingName).observe(FIRDataEventType.value, with: { (snapshot) in
-            let postDict = snapshot.value as? [String : [[String : AnyObject]]] ?? [:]
-            
+            let postDict = snapshot.value as? [String : [String : [String : AnyObject]]] ?? [:]
+            self.toDoItems.list.removeAll(keepingCapacity: true)
             for(relationship, value) in postDict {
-                print(relationship + ": " + (value[0]["value"] as! String))
+                for(val, info) in value{
+                    self.toDoItems.prepend(newItem: ToDoItem(relationship: relationship, value: val , index: info["index"] as! Int, instance: info["instance"] as! Int))
+                }
                 //make temp list and then sort it and then prepend onto the list
                 
                 
-                self.toDoItems.prepend(newItem: ToDoItem(relationship: relationship, value: value[0]["value"] as! String, index: value[0]["index"] as! Int, instance: value[0]["instance"] as! Int))
+                
             }
             self.toDoItems.sort()
             
@@ -223,8 +230,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let firstTextField = alertController.textFields![0] as UITextField
             let secondTextField = alertController.textFields![1] as UITextField
             
-            self.toDoItems.list.append(ToDoItem(relationship: firstTextField.text!, value: secondTextField.text!, index: -1, instance: 0))
-            self.tableView.reloadData()
+            
+            self.addChild(parent: "Take a bath", relationship: firstTextField.text!, value: secondTextField.text!)
+            
             
         })
         
