@@ -37,8 +37,9 @@ class ToDoList: NSObject {
         return item1.index < item2.index
     }
     
-    func pop(){
-        list.removeLast()
+    func pop() -> ToDoItem{
+        return list.removeLast()
+        
     }
     
     func get(index : Int) -> ToDoItem{
@@ -49,7 +50,7 @@ class ToDoList: NSObject {
     
     func printList(){
         for item in list{
-            print(item.text())
+            print(item.value)
         }
     }
     

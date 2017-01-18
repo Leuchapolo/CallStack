@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ref : FIRDatabaseReference!
     
     @IBOutlet weak var tableView: UITableView!
-
+    var currentThing = "Take a bath"
     
     var toDoItems = ToDoList()
     
@@ -24,7 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         self.ref = FIRDatabase.database().reference()
         
-                                                //LOAD METHOD GOES HERE!!!!!!!!!!!!!
+        
         toDoItems = ToDoList()
         loadList(thingName: "Take a bath", instanceNumber: 0, ref: ref)
         
@@ -48,20 +48,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    func addChild(parent : String, relationship : String, value : String ){
-        self.ref.child("Everything/"  + parent + "/" + relationship + "/" + value).setValue( ["instance" :  0, "index" : toDoItems.count()])
+    func addChild(parent : String,  value : String ){
+        self.ref.child("Everything/"  + parent + "/" + value).setValue( ["instance" :  0, "index" : toDoItems.count()])
         
     }
     
     func loadList(thingName : String, instanceNumber : Int, ref : FIRDatabaseReference){
         
         let refHandle = ref.child("Everything/" + thingName).observe(FIRDataEventType.value, with: { (snapshot) in
-            let postDict = snapshot.value as? [String : [String : [String : AnyObject]]] ?? [:]
+            let postDict = snapshot.value as? [String : [String : AnyObject]] ?? [:]
             self.toDoItems.list.removeAll(keepingCapacity: true)
-            for(relationship, value) in postDict {
-                for(val, info) in value{
-                    self.toDoItems.prepend(newItem: ToDoItem(relationship: relationship, value: val , index: info["index"] as! Int, instance: info["instance"] as! Int))
-                }
+            for (val, info) in postDict {
+                
+                    self.toDoItems.prepend(newItem: ToDoItem( value: val , index: info["index"] as! Int, instance: info["instance"] as! Int))
+                
                 //make temp list and then sort it and then prepend onto the list
                 
                 
@@ -207,7 +207,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     @IBAction func pop(_ sender: Any) {
-        toDoItems.pop()
+        //delete the value at the destination returned by the item
+        
+        self.ref.child("Everything/"  + currentThing + "/" + toDoItems.pop().value ).setValue(nil)
         tableView.reloadData()
     }
     
@@ -228,21 +230,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             alert -> Void in
             
             let firstTextField = alertController.textFields![0] as UITextField
-            let secondTextField = alertController.textFields![1] as UITextField
             
             
-            self.addChild(parent: "Take a bath", relationship: firstTextField.text!, value: secondTextField.text!)
+            
+            self.addChild(parent: "Take a bath", value: firstTextField.text!)
             
             
         })
         
         
         
+        
         alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "What is the relationship?"
-        }
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "What is the value?"
+            textField.placeholder = "What would you like to add?"
         }
         
         
@@ -270,7 +270,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath as IndexPath) 
         let item = toDoItems.get(index: toDoItems.count() - 1 - indexPath.row)
-        cell.textLabel?.text = item.text()
+        cell.textLabel?.text = item.value
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.textAlignment = .center
         cell.layer.cornerRadius = 8.0

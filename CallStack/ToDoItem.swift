@@ -9,23 +9,21 @@
 import UIKit
 
 class ToDoItem: NSObject {
-    var relationship : String
+    
     var value: String
     var index: Int
     var instance : Int
     
     
     
-    init(relationship : String , value: String, index : Int, instance : Int) {
-        self.relationship = relationship
+    init( value: String, index : Int, instance : Int) {
+        
         self.value = value
         self.index = index
         self.instance = instance
         
     }
-    func text() -> String{
-        return relationship + ": " + value
-    }
+    
     
     
 }
