@@ -158,6 +158,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
                 
             }
+            
+        case UIGestureRecognizerState.ended:
+            reorderInFireBase()
         
             
         default:
@@ -186,6 +189,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
 
+    }
+    
+    func reorderInFireBase(){
+        for  item in toDoItems.list{
+            //add a dictionary entry with the key being the path to the order and then use update child values to do it all
+        }
     }
     
     func snapshotOfCell(_ inputView: UIView) -> UIView {
