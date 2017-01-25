@@ -153,14 +153,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     
                     
                     tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
+                    reorderInFireBase()
                     Path.initialIndexPath = indexPath
                     tableView.reloadData()
                 }
                 
             }
             
-        case UIGestureRecognizerState.ended:
-            reorderInFireBase()
+        
+            
+            
         
             
         default:
@@ -192,9 +194,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func reorderInFireBase(){
+        var i = 0
+        var indexDict = [String : Int]()
+        var newKey = ""
         for  item in toDoItems.list{
             //add a dictionary entry with the key being the path to the order and then use update child values to do it all
+            newKey = "Everything/Take a bath/" + item.value + "/index"
+            indexDict[newKey] = i
+            i+=1
         }
+        ref.updateChildValues(indexDict)
+        tableView.reloadData()
     }
     
     func snapshotOfCell(_ inputView: UIView) -> UIView {
