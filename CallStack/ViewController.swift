@@ -155,7 +155,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     tableView.moveRow(at: Path.initialIndexPath!, to: indexPath!)
                     reorderInFireBase()
                     Path.initialIndexPath = indexPath
-                    tableView.reloadData()
+                    
                 }
                 
             }
@@ -224,54 +224,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-    
-    @IBAction func pop(_ sender: Any) {
-        //delete the value at the destination returned by the item
-        
+    func pop(){
+        toDoItems.pop()
         self.ref.child("Everything/"  + currentThing + "/" + toDoItems.pop().value ).setValue(nil)
-        tableView.reloadData()
-    }
-    
-    
-    
-    
-    
-    
-    
-    @IBAction func addScreenButton(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Add New Name", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
-            (action : UIAlertAction!) -> Void in
-            
-        })
-        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: {
-            alert -> Void in
-            
-            let firstTextField = alertController.textFields![0] as UITextField
-            
-            
-            
-            self.addChild(parent: "Take a bath", value: firstTextField.text!)
-            
-            
-        })
-        
-        
-        
-        
-        alertController.addTextField { (textField : UITextField!) -> Void in
-            textField.placeholder = "What would you like to add?"
-        }
-        
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-        
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
    
 
