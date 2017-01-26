@@ -14,7 +14,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var ref : FIRDatabaseReference!
     
+   
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
     var currentThing = "Take a bath"
     
     var toDoItems = ToDoList()
@@ -30,9 +35,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
-        
-        
         tableView.dataSource = self
+        
+        
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         let longpress = UILongPressGestureRecognizer(target: self, action: #selector(ViewController.tableLongPressed(_:)))
