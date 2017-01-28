@@ -9,11 +9,12 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     
     var ref : FIRDatabaseReference!
     
+    @IBOutlet weak var terminalInputField: UITextField!
    
     
     @IBOutlet weak var tableView: UITableView!
@@ -28,7 +29,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         self.ref = FIRDatabase.database().reference()
-        
+        self.terminalInputField.delegate = self
         
         toDoItems = ToDoList()
         loadList(thingName: "Take a bath", instanceNumber: 0, ref: ref)
@@ -51,6 +52,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
 
+    }
+    
+    @IBAction func enterButtonPressed(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        
+        terminalInputField.resignFirstResponder()
+        return true
     }
     
     func addChild(parent : String,  value : String ){

@@ -35,7 +35,7 @@
                                 </connections>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iTY-iA-Ue0">
-                                <rect key="frame" x="9" y="64" width="358" height="550"/>
+                                <rect key="frame" x="8" y="109" width="358" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.95686274510000002" green="0.99215686270000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -53,54 +53,45 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="UQ9-9x-p0c"/>
                                 </connections>
                             </tableView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phW-wh-b3D">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wi-qF-Du9">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                        <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-FC-KVm">
-                                                <rect key="frame" x="8" y="570" width="359" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Gaa-FC-KVm" secondAttribute="trailing" constant="8" id="6iG-mq-0DX"/>
-                                            <constraint firstItem="Gaa-FC-KVm" firstAttribute="leading" secondItem="9wi-qF-Du9" secondAttribute="leading" constant="8" id="bxs-Vj-Wsi"/>
-                                            <constraint firstAttribute="bottom" secondItem="Gaa-FC-KVm" secondAttribute="bottom" constant="3" id="jwE-Xx-s5Y"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="9wi-qF-Du9" secondAttribute="trailing" id="8hM-35-npb"/>
-                                    <constraint firstItem="9wi-qF-Du9" firstAttribute="leading" secondItem="phW-wh-b3D" secondAttribute="leading" id="G6Q-gK-wXD"/>
-                                    <constraint firstAttribute="bottom" secondItem="9wi-qF-Du9" secondAttribute="bottom" id="U1Y-ky-6R2"/>
-                                    <constraint firstItem="9wi-qF-Du9" firstAttribute="centerX" secondItem="phW-wh-b3D" secondAttribute="centerX" id="fAg-dd-wqO"/>
-                                    <constraint firstItem="9wi-qF-Du9" firstAttribute="top" secondItem="phW-wh-b3D" secondAttribute="top" id="qTd-0Z-pv2"/>
-                                </constraints>
-                            </scrollView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gaa-FC-KVm">
+                                <rect key="frame" x="8" y="71" width="333" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HAj-xj-SzT"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RgC-f0-B2w">
+                                <rect key="frame" x="338" y="64" width="37" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="enterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ca6-fA-PBb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.95566553089999995" green="0.98962850999999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="iTY-iA-Ue0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="3xs-EP-jR5"/>
-                            <constraint firstItem="phW-wh-b3D" firstAttribute="centerX" secondItem="iTY-iA-Ue0" secondAttribute="centerX" id="4ym-Li-lDM"/>
-                            <constraint firstItem="H7G-69-DtC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9MR-6O-aL7"/>
-                            <constraint firstItem="H7G-69-DtC" firstAttribute="leading" secondItem="phW-wh-b3D" secondAttribute="leading" id="FSI-f8-mVL"/>
-                            <constraint firstItem="phW-wh-b3D" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Hp9-n6-0Rs"/>
-                            <constraint firstItem="H7G-69-DtC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="K7b-Mp-smp"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iTY-iA-Ue0" secondAttribute="bottom" constant="53" id="OiX-In-LaJ"/>
-                            <constraint firstItem="H7G-69-DtC" firstAttribute="trailing" secondItem="phW-wh-b3D" secondAttribute="trailing" id="Vr7-St-bCc"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9wi-qF-Du9" secondAttribute="bottom" id="ZFz-HZ-rbZ"/>
-                            <constraint firstAttribute="trailing" secondItem="H7G-69-DtC" secondAttribute="trailing" id="fBG-NV-FKs"/>
-                            <constraint firstItem="phW-wh-b3D" firstAttribute="top" secondItem="iTY-iA-Ue0" secondAttribute="top" id="gi0-j2-YMV"/>
-                            <constraint firstItem="phW-wh-b3D" firstAttribute="top" secondItem="H7G-69-DtC" secondAttribute="bottom" id="sbY-ff-D4k"/>
+                            <constraint firstItem="H7G-69-DtC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2wd-KT-ucp"/>
+                            <constraint firstItem="H7G-69-DtC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="530-AD-gJl"/>
+                            <constraint firstItem="RgC-f0-B2w" firstAttribute="leading" secondItem="Gaa-FC-KVm" secondAttribute="trailing" constant="-3" id="PD1-r2-dJn"/>
+                            <constraint firstItem="iTY-iA-Ue0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="RyY-x6-IKY"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iTY-iA-Ue0" secondAttribute="bottom" constant="8" id="Ryn-14-Pcm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H7G-69-DtC" secondAttribute="trailing" constant="-16" id="WQ9-cu-VXb"/>
+                            <constraint firstItem="iTY-iA-Ue0" firstAttribute="top" secondItem="Gaa-FC-KVm" secondAttribute="bottom" constant="8" id="XOE-7W-R7x"/>
+                            <constraint firstItem="iTY-iA-Ue0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Y4n-Ny-faY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RgC-f0-B2w" secondAttribute="trailing" constant="-16" id="bS1-FJ-7FD"/>
+                            <constraint firstItem="RgC-f0-B2w" firstAttribute="top" secondItem="H7G-69-DtC" secondAttribute="bottom" id="hPY-we-1b7"/>
+                            <constraint firstItem="Gaa-FC-KVm" firstAttribute="top" secondItem="H7G-69-DtC" secondAttribute="bottom" constant="7" id="pWQ-ig-vKv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Gaa-FC-KVm" secondAttribute="trailing" constant="18" id="pds-pl-CuX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iTY-iA-Ue0" secondAttribute="trailing" constant="-7" id="qNO-qf-qxp"/>
+                            <constraint firstItem="Gaa-FC-KVm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-8" id="s3W-eP-5Zv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="iTY-iA-Ue0" id="YRC-79-UDU"/>
+                        <outlet property="terminalInputField" destination="Gaa-FC-KVm" id="ckW-7G-L78"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
