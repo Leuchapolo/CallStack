@@ -55,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func enterButtonPressed(_ sender: Any) {
-        view.endEditing(true)
+        processText()
     }
     
     
@@ -63,6 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     {
         
         terminalInputField.resignFirstResponder()
+        processText()
         return true
     }
     
@@ -249,7 +250,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    
+    func processText(){
+        let text = terminalInputField.text
+        terminalInputField.text = ""
+        if((text?.characters.count)! < 3){
+            return
+        }
+        if(text == "pop"){
+            pop()
+        }
+        
+        if(text?.substring(to: (text?.index((text?.startIndex)!, offsetBy: 3))!) == "add" ){
+            let newChild = text?.substring(from: (text?.index((text?.startIndex)!, offsetBy: 4))!)
+            print(newChild)
+            addChild(parent: currentThing, value: newChild!)
+            
+        }
+    }
     
     
     
