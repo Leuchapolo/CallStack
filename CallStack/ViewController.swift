@@ -55,14 +55,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func enterButtonPressed(_ sender: Any) {
+        terminalInputField.resignFirstResponder()
         processText()
+        
     }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
         
-        terminalInputField.resignFirstResponder()
+        
         processText()
         return true
     }
@@ -244,7 +246,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     func pop(){
-        toDoItems.pop()
+        
         self.ref.child("Everything/"  + currentThing + "/" + toDoItems.pop().value ).setValue(nil)
         
     }
@@ -253,17 +255,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func processText(){
         let text = terminalInputField.text
         terminalInputField.text = ""
+        var arr = text?.components(separatedBy:  "\"")
+        var index = 0
+        var stringArgs = [String]()
+        for item in arr!{
+            if(item != " " && item != "" && index != 0){
+                
+                stringArgs.insert(item, at: 0)
+            }
+            index += 1
+        }
+        
         if((text?.characters.count)! < 3){
             return
         }
         if(text == "pop"){
             pop()
         }
+        if(text == "debug print"){
+            toDoItems.printList()
+            print(toDoItems.count())
+        }
         
         if(text?.substring(to: (text?.index((text?.startIndex)!, offsetBy: 3))!) == "add" ){
-            let newChild = text?.substring(from: (text?.index((text?.startIndex)!, offsetBy: 4))!)
-            print(newChild)
-            addChild(parent: currentThing, value: newChild!)
+            
+            
+            var newChild = ""
+            for item in stringArgs {
+                newChild = item
+                
+                addChild(parent: currentThing, value: newChild)
+            }
+            
             
         }
     }
