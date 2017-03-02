@@ -15,12 +15,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var ref : FIRDatabaseReference!
     
     @IBOutlet weak var terminalInputField: UITextField!
-   
+    
+    @IBOutlet weak var enterButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    
+    enum Color{
+        case blue
+        case red
+        case green
+    }
+    var colorScheme = Color.red
     var currentThing = "Take a bath"
     
     var toDoItems = ToDoList()
@@ -70,15 +75,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func addChild(parent : String,  value : String ){
+        print(value +  " \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         self.ref.child("Everything/"  + parent + "/" + value).setValue( ["instance" :  0, "index" : toDoItems.count()])
         
     }
     
     func loadList(thingName : String, instanceNumber : Int, ref : FIRDatabaseReference){
-        
+        print("THis should workkkkkkk \n \n \n \n \n")
         let refHandle = ref.child("Everything/" + thingName).observe(FIRDataEventType.value, with: { (snapshot) in
             let postDict = snapshot.value as? [String : [String : AnyObject]] ?? [:]
             self.toDoItems.list.removeAll(keepingCapacity: true)
+            
             for (val, info) in postDict {
                 
                     self.toDoItems.prepend(newItem: ToDoItem( value: val , index: info["index"] as! Int, instance: info["instance"] as! Int))
@@ -96,16 +103,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    
-    
-    
-    func colorForIndex(index: Int) -> UIColor {
+    func blueColorForIndex(index: Int) -> UIColor {
         let itemCount = toDoItems.count() - 1
         var val = (CGFloat(index) / CGFloat(itemCount)) * 0.6
         if (itemCount == 1 && index == 1){
             val = 0.3
         }
-        return UIColor(red: val / 2, green: val, blue: 0.84, alpha: 1.0)
+        return UIColor(red: val * 0.5, green: val  , blue: 0.84, alpha: 1.0)
+    }
+    
+    
+    func redColorForIndex(index: Int) -> UIColor {
+        let itemCount = toDoItems.count() - 1
+        var val = (CGFloat(index) / CGFloat(itemCount)) * 0.3
+        if (itemCount == 1 && index == 1){
+            val = 0.3
+        }
+        return UIColor(red: 0.9, green: val * 1.1 + 0.3 , blue: val + 0.4, alpha: 1.0)
     }
     
     
@@ -289,6 +303,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             
         }
+        if(text?.substring(to: (text?.index((text?.startIndex)!, offsetBy: 4))!) == "blue" ){
+            colorScheme = Color.blue
+            enterButton.titleLabel?.textColor = UIColor(colorLiteralRed: 0.1, green: 0.2, blue: 0.8, alpha: 1)
+            tableView.reloadData()
+        }
+        
     }
     
     
@@ -324,7 +344,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,
                    forRowAt indexPath: IndexPath) {
-        cell.backgroundColor = colorForIndex(index: indexPath.row)
+        if(colorScheme == Color.red){
+            cell.backgroundColor = redColorForIndex(index: indexPath.row)
+        } else if (colorScheme == Color.blue){
+            cell.backgroundColor = blueColorForIndex(index: indexPath.row)
+        }
+        
         
     }
 
