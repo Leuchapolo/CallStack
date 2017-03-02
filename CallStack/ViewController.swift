@@ -121,6 +121,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return UIColor(red: 0.9, green: val * 1.1 + 0.3 , blue: val + 0.4, alpha: 1.0)
     }
+    func greenColorForIndex(index: Int) -> UIColor {
+        let itemCount = toDoItems.count() - 1
+        var val = (CGFloat(index) / CGFloat(itemCount)) * 0.4
+        if (itemCount == 1 && index == 1){
+            val = 0.3
+        }
+        return UIColor(red: val / 1.3 + 0.3, green: 0.8 , blue: val + 0.3  , alpha: 1.0)
+    }
     
     
     
@@ -280,9 +288,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             index += 1
         }
         
-        if((text?.characters.count)! < 3){
-            return
-        }
+        
         if(text == "pop"){
             pop()
         }
@@ -291,6 +297,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             print(toDoItems.count())
         }
         
+        if(text == "red" ){
+            colorScheme = Color.red
+            enterButton.titleLabel?.textColor = UIColor(colorLiteralRed: 0.9, green: 0.3, blue: 0.4, alpha: 1)
+            tableView.reloadData()
+        }
+        
+        if(text == "blue" ){
+            colorScheme = Color.blue
+            enterButton.titleLabel?.textColor = UIColor(colorLiteralRed: 0.1, green: 0.2, blue: 0.8, alpha: 1)
+            tableView.reloadData()
+        }
+        if(text == "green" ){
+            colorScheme = Color.green
+            enterButton.titleLabel?.textColor = UIColor(colorLiteralRed: 0.1, green: 0.8, blue: 0.2, alpha: 1)
+            tableView.reloadData()
+        }
+        if((text?.characters.count)! < 3){
+            return
+        }
         if(text?.substring(to: (text?.index((text?.startIndex)!, offsetBy: 3))!) == "add" ){
             
             
@@ -300,14 +325,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 addChild(parent: currentThing, value: newChild)
             }
-            
-            
         }
-        if(text?.substring(to: (text?.index((text?.startIndex)!, offsetBy: 4))!) == "blue" ){
-            colorScheme = Color.blue
-            enterButton.titleLabel?.textColor = UIColor(colorLiteralRed: 0.1, green: 0.2, blue: 0.8, alpha: 1)
-            tableView.reloadData()
-        }
+        
         
     }
     
@@ -348,6 +367,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             cell.backgroundColor = redColorForIndex(index: indexPath.row)
         } else if (colorScheme == Color.blue){
             cell.backgroundColor = blueColorForIndex(index: indexPath.row)
+        } else {
+            cell.backgroundColor = greenColorForIndex(index: indexPath.row)
         }
         
         
